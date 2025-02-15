@@ -8,7 +8,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <TemplateChepe bigWord={'love'} smallText={'Love is a gift that trancends time, a treasure that brings lughts to the darkest days, andd a beacon that guides us through life’s uncertainties.'}/>
+      <TemplateChepe texts={['love', 'Love is a gift that trancends time, a treasure that brings lughts to the darkest days, andd a beacon that guides us through life’s uncertainties.']}/>
     </View>
     
   );

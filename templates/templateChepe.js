@@ -3,7 +3,7 @@ import { useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
 
 
-export default function TemplateChepe({bigWord, smallText}) {
+export default function TemplateChepe({texts}) {
     const [images, setImages] = useState({'I0': null, 'I1': null, 'I2': null});
 
     const pickImage = async (imageNumber) => {
@@ -30,10 +30,10 @@ export default function TemplateChepe({bigWord, smallText}) {
         <View style={stylesChepe.container}>
             <View style={stylesChepe.words_view}>
                 <View style={stylesChepe.big_word_view}>
-                    <Text style={stylesChepe.big_word}>{bigWord}</Text>
+                    <Text style={stylesChepe.big_word}>{texts[0]}</Text>
                 </View>
                 <View style={stylesChepe.small_words_view}>
-                    <Text style={stylesChepe.small_text}>{smallText}</Text>
+                    <Text style={stylesChepe.small_text}>{texts[1]}</Text>
                 </View>
             </View>
             <View style={stylesChepe.images_view}>
