@@ -34,3 +34,9 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# Bun
+bun.lock
+
+# VS Code
+.vscode/
