@@ -37,3 +37,6 @@ yarn-error.*
 
 # Bun
 bun.lock
+
+# VS Code
+.vscode/
