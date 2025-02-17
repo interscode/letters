@@ -15,7 +15,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="letters"
         options={{
-          title: 'Letters',
+          title: 'My Letters',
           tabBarIcon: ({ color }) => <IconMail color={color} size={28} />,
         }}
       />

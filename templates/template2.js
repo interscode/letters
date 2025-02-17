@@ -85,7 +85,7 @@ export default function Template2() {
         />
       </TouchableOpacity>
       <View style={styles.text2}>
-        <TextInput placeholder="Introduce tu texto aquí..." style={styles.textEdit}></TextInput>
+        <TextInput style={styles.textEdit}></TextInput>
       </View>
     </ImageBackground>
   );

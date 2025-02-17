@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   template: {
-    transform: [{ scale: 0.8 }],
+    transform: [{ scale: 0.9 }],
     transformOrigin: "top left",
     width: "125%",
     height: "125%",

@@ -8,7 +8,7 @@ import {
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 
-export default function Template3() {
+export default function Template3({ exported }) {
   const [images, setImages] = useState({ I0: null, I1: null, I2: null });
 
   const pickImage = async (imageNumber) => {
@@ -33,19 +33,30 @@ export default function Template3() {
     }
   };
 
+  const borderImages = () => {
+    if (!exported) {
+      return { borderStyle: "dashed", borderWidth: 2 };
+    } else {
+      return {};
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.words_view}>
         <View style={styles.big_word_view}>
-          <TextInput placeholder="Tu texto aquí" style={styles.big_word}></TextInput>
+          <TextInput placeholder="Palabra" style={styles.big_word}></TextInput>
         </View>
         <View style={styles.small_words_view}>
-          <TextInput placeholder="Tu texto aquí" style={styles.small_text}></TextInput>
+          <TextInput
+            placeholder="Tu frase aquí..."
+            style={styles.small_text}
+          ></TextInput>
         </View>
       </View>
       <View style={styles.images_view}>
         <TouchableOpacity
-          style={styles.image_view}
+          style={[styles.image_view, borderImages()]}
           onPress={() => pickImage(0)}
         >
           <Image
@@ -62,7 +73,7 @@ export default function Template3() {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.image_view}
+          style={[styles.image_view, borderImages()]}
           onPress={() => pickImage(1)}
         >
           <Image
@@ -79,7 +90,7 @@ export default function Template3() {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.image_view}
+          style={[styles.image_view, borderImages()]}
           onPress={() => pickImage(2)}
         >
           <Image
@@ -109,14 +120,11 @@ const styles = StyleSheet.create({
   },
   words_view: {
     flexDirection: "row",
-    transform: [
-      { rotate: "-90deg" },
-      { translateY: "12%" },
-      { translateX: -50 },
-    ],
+    transform: [{ rotate: "-90deg" }],
+    marginLeft: 60,
   },
   big_word_view: {
-    marginRight: 40,
+    marginRight: 10,
   },
   big_word: {
     fontFamily: "monospace",
@@ -135,13 +143,11 @@ const styles = StyleSheet.create({
   },
   images_view: {
     flexDirection: "column",
-    marginLeft: -500,
+    marginLeft: -530,
     marginTop: 60,
     width: "100%",
   },
   image_view: {
-    borderStyle: "dashed",
-    borderWidth: 2,
     borderColor: "#b0b0b0",
     alignItems: "center",
     justifyContent: "center",

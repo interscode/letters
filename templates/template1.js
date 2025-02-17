@@ -48,8 +48,8 @@ export default function Template1() {
     <View style={styles.container}>
       <TextInput
         style={styles.text}
-        placeholder="Introduce tu mensaje..."
-      ></TextInput>
+        placeholder="Tu texto aquí"
+      />
       <View style={styles.imageContainer}>
         <TouchableOpacity style={styles.button} onPress={pickImage}>
           <Text style={styles.buttonText}>Seleccionar imagen</Text>
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   text: {
-    fontSize: 34,
+    fontSize: 36,
     color: "#8D0000",
     fontFamily: "LaBelleAurore",
     marginBottom: 20,
@@ -125,12 +125,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   helperText: {
-    fontSize: 15,
+    fontSize: 20,
     fontFamily: "LaBelleAurore",
     zIndex: 10,
     position: "absolute",
     bottom: -110,
     textAlign: "center",
-    opacity: 0.3,
   },
 });
