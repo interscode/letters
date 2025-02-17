@@ -1,36 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Alert, Pressable } from 'react-native';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import * as ImagePicker from 'expo-image-picker';
+import { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Alert,
+  Pressable,
+  TextInput,
+} from "react-native";
+import { useFonts } from "expo-font";
+import * as ImagePicker from "expo-image-picker";
 
-
-SplashScreen.preventAutoHideAsync();
-
-const MiComponente = () => {
-  const [fontsLoaded, error] = useFonts({
-    'LaBelleAurore': require('./assets/fonts/LaBelleAurore-Regular.ttf'),
+export default function Template1() {
+  const [loaded, error] = useFonts({
+    LaBelleAurore: require("../assets/fonts/LaBelleAurore-Regular.ttf"),
   });
-
   const [image, setImage] = useState(null);
 
-
-  if (error) {
-    console.error('Error cargando la fuente:', error);
+  if (!loaded && !error) {
+    return null;
   }
-
-
-  useEffect(() => {
-    if (fontsLoaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
 
   const pickImage = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (status !== 'granted') {
-      Alert.alert('Permiso denegado', 'Necesitas permitir el acceso a la galería para seleccionar una imagen.');
+    if (status !== "granted") {
+      Alert.alert(
+        "Permiso denegado",
+        "Necesitas permitir el acceso a la galería para seleccionar una imagen."
+      );
       return;
     }
 
@@ -46,76 +44,70 @@ const MiComponente = () => {
     }
   };
 
-
-  if (!fontsLoaded) {
-    return null;
-  }
-
-
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Happy Valentine's Day!</Text>
-
-
+      <TextInput
+        style={styles.text}
+        placeholder="Introduce tu mensaje..."
+      ></TextInput>
       <View style={styles.imageContainer}>
-
         <TouchableOpacity style={styles.button} onPress={pickImage}>
           <Text style={styles.buttonText}>Seleccionar imagen</Text>
         </TouchableOpacity>
-
-
         {image && (
           <>
             <Pressable
-              style={{ position: 'absolute', top: 0, left: 0 }}
+              style={{ position: "absolute", top: 0, left: 0 }}
               onLongPress={pickImage}
             >
               <Image source={{ uri: image }} style={styles.image} />
             </Pressable>
-            <Text style={styles.helperText}>Manten presionada la imagen para cambiar</Text>
           </>
         )}
-       
+        <TextInput
+          style={styles.helperText}
+          placeholder="Introduce tu mensaje..."
+        />
       </View>
-
-
       <View style={styles.heartContainer}>
         <Image
-          source={require('./assets/pics/red heart.png')}
+          source={require("../assets/pics/red heart.png")}
           style={styles.heartImage}
         />
       </View>
     </View>
   );
-};
+}
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F8F8FF',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F8F8FF",
     paddingHorizontal: 20,
+    height: "100%",
+    width: "100%",
   },
   text: {
-    fontSize: 36,
-    color: '#8D0000',
-    fontFamily: 'LaBelleAurore',
+    fontSize: 34,
+    color: "#8D0000",
+    fontFamily: "LaBelleAurore",
     marginBottom: 20,
   },
   imageContainer: {
-    position: 'relative',
-    justifyContent: 'center',
-    alignItems: 'center',
+    position: "relative",
+    justifyContent: "center",
+    alignItems: "center",
     width: 200,
     height: 250,
   },
   button: {
-    backgroundColor: '#8D0000',
+    backgroundColor: "#8D0000",
     padding: 10,
     borderRadius: 5,
   },
   buttonText: {
-    color: '#FFF',
+    color: "#FFF",
     fontSize: 16,
   },
   image: {
@@ -130,6 +122,7 @@ const styles = StyleSheet.create({
   heartImage: {
     width: 110,
     height: 100,
+    fontSize: 20,
   },
   helperText: {
     fontSize: 15,
@@ -138,8 +131,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: -110,
     textAlign: "center",
-    opacity: .3
-  }
+    opacity: 0.3,
+  },
 });
-
-export default MiComponente;
